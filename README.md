@@ -2,6 +2,10 @@
 
 Forked from [github.com/bndr/gojenkins](https://github.com/bndr/gojenkins)
 
+```bash
+go get github.com/k8scat/gojenkins
+```
+
 [![GoDoc](https://godoc.org/github.com/bndr/gojenkins?status.svg)](https://godoc.org/github.com/bndr/gojenkins)
 [![Go Report Cart](https://goreportcard.com/badge/github.com/bndr/gojenkins)](https://goreportcard.com/report/github.com/bndr/gojenkins)
 [![Build Status](https://travis-ci.org/bndr/gojenkins.svg?branch=master)](https://travis-ci.org/bndr/gojenkins)
