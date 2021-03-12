@@ -107,8 +107,8 @@ func (t *Task) Cancel(ctx context.Context) (bool, error) {
 	return response.StatusCode == 200, nil
 }
 
-func (t *Task) GetJob(ctx context.Context) (*Job, error) {
-	return t.Jenkins.GetJob(ctx, t.Raw.Task.Name)
+func (t *Task) GetJob(ctx context.Context, parents ...string) (*Job, error) {
+	return t.Jenkins.GetJob(ctx, t.Raw.Task.Name, parents...)
 }
 
 func (t *Task) GetWhy() string {
