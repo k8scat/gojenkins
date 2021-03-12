@@ -324,8 +324,8 @@ func (j *Jenkins) GetLabel(ctx context.Context, name string) (*Label, error) {
 	return nil, errors.New("No label found")
 }
 
-func (j *Jenkins) GetBuild(ctx context.Context, jobName string, number int64) (*Build, error) {
-	job, err := j.GetJob(ctx, jobName)
+func (j *Jenkins) GetBuild(ctx context.Context, jobName string, number int64, parents ...string) (*Build, error) {
+	job, err := j.GetJob(ctx, jobName, parents...)
 	if err != nil {
 		return nil, err
 	}
