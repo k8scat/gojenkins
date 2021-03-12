@@ -267,8 +267,9 @@ func (j *Jenkins) DeleteJob(ctx context.Context, name string) (bool, error) {
 // Invoke a job.
 // First parameter job name, second parameter is optional Build parameters.
 // Returns queue id
-func (j *Jenkins) BuildJob(ctx context.Context, name string, params map[string]string) (int64, error) {
-	job := Job{Jenkins: j, Raw: new(JobResponse), Base: "/job/" + name}
+func (j *Jenkins) BuildJob(ctx context.Context, name string, params map[string]string, parents ...string) (int64, error) {
+	parents = append(parents, name)
+	job := Job{Jenkins: j, Raw: new(JobResponse), Base: "/job/" + strings.Join(parents, "/job/")}
 	return job.InvokeSimple(ctx, params)
 }
 
