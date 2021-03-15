@@ -259,7 +259,7 @@ func (j *Jenkins) CopyJob(ctx context.Context, copyFrom string, newName string) 
 }
 
 // Delete a job.
-func (j *Jenkins) DeleteJob(ctx context.Context, name string, parents ...string) (bool, error) {
+func (j *Jenkins) DeleteJob(ctx context.Context, name string, parents ...string) error {
 	job := Job{Jenkins: j, Raw: new(JobResponse), Base: "/job/" + strings.Join(append(parents, name), "/job/")}
 	return job.Delete(ctx)
 }

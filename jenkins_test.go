@@ -205,8 +205,8 @@ func TestCopyDeleteJob(t *testing.T) {
 	job, _ := jenkins.GetJob(ctx, "Job1_test")
 	jobCopy, _ := job.Copy(ctx, "Job1_test_copy")
 	assert.Equal(t, jobCopy.GetName(), "Job1_test_copy")
-	jobDelete, _ := job.Delete(ctx)
-	assert.Equal(t, true, jobDelete)
+	err := job.Delete(ctx)
+	assert.Nil(t, err)
 }
 
 func TestGetPlugins(t *testing.T) {

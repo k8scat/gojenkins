@@ -299,15 +299,15 @@ func (j *Job) Disable(ctx context.Context) (bool, error) {
 	return true, nil
 }
 
-func (j *Job) Delete(ctx context.Context) (bool, error) {
+func (j *Job) Delete(ctx context.Context) error {
 	resp, err := j.Jenkins.Requester.Post(ctx, j.Base+"/doDelete", nil, nil, nil)
 	if err != nil {
-		return false, err
+		return err
 	}
 	if resp.StatusCode != 200 {
-		return false, errors.New(strconv.Itoa(resp.StatusCode))
+		return errors.New(strconv.Itoa(resp.StatusCode))
 	}
-	return true, nil
+	return nil
 }
 
 func (j *Job) Rename(ctx context.Context, name string) (bool, error) {
